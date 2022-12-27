@@ -14,6 +14,7 @@ public class BlockIsAvailableForSpawn : MonoBehaviour
             isAvailable = false;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<HouseMovement>())

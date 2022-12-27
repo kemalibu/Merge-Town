@@ -1,20 +1,18 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HouseCollider : MonoBehaviour
 {
-    private HouseMovement houseMovement;
     private int index;
 
     public GameObject[] houses;
 
-    void Start()
-    {
-        houseMovement = GetComponent<HouseMovement>();
-    }
+    [SerializeField] private float movePositionTime = 0.2f;
 
-    private void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("House1"))
         {
@@ -35,28 +33,28 @@ public class HouseCollider : MonoBehaviour
         {
             index = 4;
         }
-
-        else if (other.gameObject.CompareTag("House5"))
-        {
-            index = 5;
-        }
-
-
     }
 
     void OnTriggerStay(Collider other)
-    {   
-        if (other.gameObject.tag == gameObject.tag && houseMovement.IsTrigger)
+    {
+        HouseMovement houseMovement = GetComponent<HouseMovement>();
+        if (houseMovement != null)
+
+        if(other.gameObject.tag == gameObject.tag && houseMovement.IsTrigger)
         {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Epsilon);
+            GameObject newHouse = Instantiate(houses[index], hitColliders[1].transform.position,
+                                              Quaternion.identity);
+            newHouse.transform.parent = transform.parent;
             Destroy(gameObject);
             Destroy(other.gameObject);
-            GameObject newHouse = Instantiate(houses[index], transform.position, transform.rotation);
-            newHouse.transform.parent = transform.parent;
         }
 
-        //if(other.gameObject.tag != gameObject.tag && gameObject.GetComponent<HouseCollider>())
-        //{
-        //    other.gameObject.transform.position = houseMovement.FirstPosition;
-        //}
+        else if (other.gameObject.tag != gameObject.tag &&
+                 other.gameObject.transform.parent == gameObject.transform.parent &&
+                 houseMovement.IsTrigger)
+        {
+            other.gameObject.transform.DOMove(houseMovement.FirstPosition, movePositionTime);
+        }
     }
 }

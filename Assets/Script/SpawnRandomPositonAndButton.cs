@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnRandomPositonHouse1 : MonoBehaviour
+public class SpawnRandomPositonAndButton: MonoBehaviour
 {
     [SerializeField] GameObject house1;
     [SerializeField] GameObject houses;

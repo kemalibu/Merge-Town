@@ -1204,7 +1204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 893054504}
-  - component: {fileID: 893054503}
+  - component: {fileID: 893054505}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -1212,25 +1212,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &893054503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893054502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e087cd160a9a5d488fa418e5fb7721d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  house1: {fileID: 1079022074030240380, guid: 5fcc553e90f2c724abbed04e2e2b6e42, type: 3}
-  houses: {fileID: 1750913833}
-  fullText: {fileID: 1262835158}
-  timerText: {fileID: 679052662}
-  image: {fileID: 565253279}
-  timerButton: {fileID: 565253278}
-  blocks: []
 --- !u!4 &893054504
 Transform:
   m_ObjectHideFlags: 0
@@ -1255,6 +1236,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &893054505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893054502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e087cd160a9a5d488fa418e5fb7721d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  house1: {fileID: 1079022074030240380, guid: 5fcc553e90f2c724abbed04e2e2b6e42, type: 3}
+  houses: {fileID: 1750913833}
+  fullText: {fileID: 1262835158}
+  timerText: {fileID: 679052662}
+  image: {fileID: 565253279}
+  timerButton: {fileID: 565253278}
+  blocks: []
 --- !u!1001 &905211252
 PrefabInstance:
   m_ObjectHideFlags: 0

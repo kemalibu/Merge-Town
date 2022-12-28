@@ -5,31 +5,31 @@ using UnityEngine;
 
 public class HouseCollider : MonoBehaviour
 {
+    [SerializeField] private float movePositionTime = 0.2f;
+
     private int index;
 
     public GameObject[] houses;
 
-    [SerializeField] private float movePositionTime = 0.2f;
-
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("House1"))
+        if (other.CompareTag("House1"))
         {
             index = 1;
         }
 
-        else if (other.gameObject.CompareTag("House2"))
+        else if (other.CompareTag("House2"))
         {
             index = 2;
         }
 
-        else if (other.gameObject.CompareTag("House3"))
+        else if (other.CompareTag("House3"))
         {
             index = 3;
         }
 
-        else if (other.gameObject.CompareTag("House4"))
+        else if (other.CompareTag("House4"))
         {
             index = 4;
         }
@@ -38,13 +38,13 @@ public class HouseCollider : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         HouseMovement houseMovement = GetComponent<HouseMovement>();
-        if (houseMovement != null)
+        if (houseMovement == null) { return; }
 
         if(other.gameObject.tag == gameObject.tag && houseMovement.IsTrigger)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Epsilon);
             GameObject newHouse = Instantiate(houses[index], hitColliders[1].transform.position,
-                                              Quaternion.identity);
+                                  Quaternion.identity);
             newHouse.transform.parent = transform.parent;
             Destroy(gameObject);
             Destroy(other.gameObject);

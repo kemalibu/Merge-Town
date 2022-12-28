@@ -7,7 +7,7 @@ public class BlockIsAvailableForSpawn : MonoBehaviour
     public bool isAvailable = true;
     public bool IsAvailable { get { return isAvailable; } }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<HouseMovement>())
         {
@@ -15,7 +15,7 @@ public class BlockIsAvailableForSpawn : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<HouseMovement>())
         {

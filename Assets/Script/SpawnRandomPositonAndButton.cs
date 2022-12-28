@@ -13,9 +13,6 @@ public class SpawnRandomPositonAndButton: MonoBehaviour
     [SerializeField] Image image;
     [SerializeField] Button timerButton;
 
-    public List<GameObject> blocks = new List<GameObject> ();
-
-    private Component[] isAvailableForSpawns;
 
     private float elapsedTime = 0f;
     private float timer = 10f;
@@ -23,19 +20,24 @@ public class SpawnRandomPositonAndButton: MonoBehaviour
     private bool isSpawn;
     private bool isClicked = false;
 
-    private void Awake()
+    public List<GameObject> blocks = new List<GameObject> ();
+
+    private Component[] isAvailableForSpawns;
+
+
+    void Awake()
     {
         isAvailableForSpawns = GetComponentsInChildren<BlockIsAvailableForSpawn>();
     }
 
-    private void Start()
+    void Start()
     {
         timerButton.onClick.AddListener(TimerButtonTrue);
         StartCoroutine(SpawnHouse1());
     }
 
 
-    private void Update()
+    void Update()
     {
         foreach (BlockIsAvailableForSpawn isAvailableForSpawn in isAvailableForSpawns)
         {
